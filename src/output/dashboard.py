@@ -3,12 +3,31 @@
 # import modules and global params
 import streamlit as st
 import requests
+import threading
+import uvicorn
+import time
 import os
 API_URL = os.getenv("API_URL")
+UVICORN_HOST = os.getenv("UVICORN_HOST")
 
-# creat temporary dashboard
+# import FastAPI app
+from src.api.main import app
+
+# Function to run API
+def run_api():
+    uvicorn.run(app, host=UVICORN_HOST, port=8000)
+
+# Start API only once
+if "api_started" not in st.session_state:
+    thread = threading.Thread(target=run_api, daemon=True)
+    thread.start()
+    st.session_state.api_started = True
+    time.sleep(2)  # give server time to start
+
+# creat temporary dashboard with API call
 try:
-    data = requests.get(API_URL).json()
+    response = requests.get(API_URL)
+    data = response.json()
     st.write(data)
-except Exception as e:
-    st.error("API not running. Please start FastAPI server.")
+except Exception:
+    st.error("API not ready yet...")
