@@ -1,9 +1,9 @@
-# filename: src/analytics/queries.py
+# filepath src/analytics/queries.py
 
-# Import modules
+# import modules
 import duckdb
 
-# Create Data Query Grab from DB
+# create data query grab from DB
 def run_queries(df):
     con = duckdb.connect()
 

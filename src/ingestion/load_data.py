@@ -1,4 +1,4 @@
-# filename: src/ingestion/load_data.py
+# filepath src/ingestion/load_data.py
 
 # import modules
 import pandas as pd
