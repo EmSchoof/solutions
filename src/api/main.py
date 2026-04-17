@@ -2,9 +2,9 @@
 
 # Import Modules
 from fastapi import FastAPI
-from ingestion.load_data import load_data
-from pipeline.transform import transform
-from analytics.queries import run_queries
+from src.ingestion.load_data import load_data
+from src.pipeline.transform import transform
+from src.analytics.queries import run_queries
 
 # Create API Layer
 app = FastAPI()
