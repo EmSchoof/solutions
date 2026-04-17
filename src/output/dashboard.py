@@ -19,7 +19,7 @@ def run_api():
 
 # Start API only once
 if "api_started" not in st.session_state:
-    thread = threading.Thread(target=run_api, daemon=True)
+    thread = threading.Thread(target=run_api, daemon=True) #shut API down w/ streamlit stop
     thread.start()
     st.session_state.api_started = True
     time.sleep(2)  # give server time to start
@@ -29,5 +29,6 @@ try:
     response = requests.get(API_URL)
     data = response.json()
     st.write(data)
-except Exception:
+except Exception as e:
     st.error("API not ready yet...")
+    st.error(f"An error occurred: {e}")
