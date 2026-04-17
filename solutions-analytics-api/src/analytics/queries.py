@@ -1,6 +1,6 @@
 # filename: src/analytics/queries.py
 
-# Impport modules
+# Import modules
 import duckdb
 
 # Create Data Query Grab from DB
