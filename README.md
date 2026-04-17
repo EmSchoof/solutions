@@ -46,7 +46,7 @@ GET /analytics
 
 ## How to Run
 ```aiignore
-streamlit run dashboard.py
+streamlit run src/output/dashboard.py
 ```
 
 ## Business Value
